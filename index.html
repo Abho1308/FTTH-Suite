@@ -762,6 +762,110 @@
 #tab-mikro .fillbar { background:#e3e3e3 !important; }
 }
 </style>
+
+<!-- ===== Patchungs-Doku (Tab) — gescopte Styles ===== -->
+<style>
+  #tab-patch .card{padding:22px 24px;margin-bottom:20px;}
+  #tab-patch .card h2{font-size:12px;text-transform:uppercase;letter-spacing:0.12em;color:var(--accent);
+    font-weight:600;margin-bottom:16px;display:flex;align-items:center;gap:8px;}
+  #tab-patch .card h2 .step{width:20px;height:20px;border-radius:6px;background:var(--accent-soft);
+    border:1px solid rgba(0,207,180,0.4);color:var(--accent);display:flex;align-items:center;
+    justify-content:center;font-size:11px;font-weight:700;}
+
+  #tab-patch .choice-row{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+  #tab-patch .choice{background:rgba(255,255,255,0.04);border:1.5px solid var(--glass-border);border-radius:14px;
+    padding:18px;cursor:pointer;transition:0.2s ease;display:flex;align-items:center;gap:14px;color:var(--text);
+    text-align:left;font-family:inherit;}
+  #tab-patch .choice:hover{border-color:rgba(0,207,180,0.5);background:rgba(0,207,180,0.06);}
+  #tab-patch .choice.active{border-color:var(--accent);background:var(--accent-soft);box-shadow:0 0 0 3px rgba(0,207,180,0.15);}
+  #tab-patch .choice .ic{width:42px;height:42px;border-radius:11px;flex:0 0 auto;display:flex;align-items:center;
+    justify-content:center;background:rgba(0,207,180,0.12);color:var(--accent);}
+  #tab-patch .choice .ic svg{width:24px;height:24px;}
+  #tab-patch .choice .t{font-weight:600;font-size:15px;}
+  #tab-patch .choice .s{font-size:12px;color:var(--text-dim);margin-top:2px;}
+
+  #tab-patch .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:14px;}
+  #tab-patch .field label{display:block;font-size:12.5px;color:var(--text-dim);margin-bottom:6px;font-weight:500;}
+  #tab-patch .field label .req{color:var(--accent);}
+  #tab-patch input,#tab-patch select{width:100%;background:rgba(255,255,255,0.06);border:1px solid var(--glass-border);
+    color:var(--text);border-radius:11px;padding:10px 12px;font-family:inherit;font-size:14px;transition:0.2s ease;outline:none;}
+  #tab-patch input:focus,#tab-patch select:focus{border-color:var(--accent);box-shadow:0 0 0 3px var(--accent-soft);}
+  #tab-patch input::placeholder{color:rgba(174,190,194,0.5);}
+  #tab-patch select{cursor:pointer;appearance:none;
+    background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'><path d='M2 4l4 4 4-4' stroke='%2300cfb4' stroke-width='1.6' fill='none' stroke-linecap='round' stroke-linejoin='round'/></svg>");
+    background-repeat:no-repeat;background-position:right 12px center;padding-right:32px;}
+  #tab-patch select option{background:#0a2a35;color:var(--text);}
+
+  #tab-patch .topo-row{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+  #tab-patch .topo{background:rgba(255,255,255,0.04);border:1.5px solid var(--glass-border);border-radius:14px;
+    padding:16px;cursor:pointer;transition:0.2s ease;}
+  #tab-patch .topo:hover{border-color:rgba(0,207,180,0.5);}
+  #tab-patch .topo.active{border-color:var(--accent);background:var(--accent-soft);box-shadow:0 0 0 3px rgba(0,207,180,0.15);}
+  #tab-patch .topo .topo-name{font-weight:600;font-size:13.5px;margin-bottom:12px;display:flex;align-items:center;gap:8px;}
+  #tab-patch .topo .topo-name .v{font-size:11px;color:var(--accent);border:1px solid rgba(0,207,180,0.4);
+    border-radius:6px;padding:1px 7px;background:var(--accent-soft);}
+  #tab-patch .chain{display:flex;align-items:center;gap:6px;flex-wrap:wrap;}
+  #tab-patch .chip{font-size:11.5px;font-weight:600;padding:6px 10px;border-radius:9px;background:rgba(255,255,255,0.06);
+    border:1px solid var(--glass-border);white-space:nowrap;}
+  #tab-patch .chip.olt{color:#5ad1ff;border-color:rgba(90,209,255,0.35);}
+  #tab-patch .chip.frms{color:#ff9ab0;border-color:rgba(255,138,160,0.35);}
+  #tab-patch .chip.odf{color:var(--accent);border-color:rgba(0,207,180,0.35);}
+  #tab-patch .arrow{color:var(--text-dim);font-size:14px;}
+
+  #tab-patch .patch-list{display:flex;flex-direction:column;gap:14px;margin-top:4px;}
+  #tab-patch .patch-card{background:rgba(0,0,0,0.18);border:1px solid var(--glass-border);border-radius:14px;
+    padding:16px 16px 16px 18px;border-left:3px solid var(--accent);}
+  #tab-patch .patch-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;}
+  #tab-patch .patch-head .pnum{font-weight:700;font-size:14px;display:flex;align-items:center;gap:9px;}
+  #tab-patch .patch-head .pnum .badge{background:var(--accent-soft);border:1px solid rgba(0,207,180,0.4);color:var(--accent);
+    border-radius:8px;padding:2px 9px;font-size:12px;}
+  #tab-patch .hops{display:flex;align-items:flex-end;gap:12px;flex-wrap:wrap;}
+  #tab-patch .hop{background:rgba(255,255,255,0.03);border:1px solid var(--glass-border);border-radius:12px;padding:11px 12px;}
+  #tab-patch .hop .hop-title{font-size:11px;text-transform:uppercase;letter-spacing:0.06em;font-weight:600;margin-bottom:8px;
+    display:flex;align-items:center;gap:6px;}
+  #tab-patch .hop.olt .hop-title{color:#5ad1ff;}
+  #tab-patch .hop.frms .hop-title{color:#ff9ab0;}
+  #tab-patch .hop.odf .hop-title{color:var(--accent);}
+  #tab-patch .hop.target .hop-title{color:#b98bff;}
+  #tab-patch .hop.spl .hop-title{color:#b98bff;}
+  #tab-patch .hop.cust{border-left:3px solid rgba(174,190,194,0.5);}
+  #tab-patch .hop.cust .hop-title{color:#c4d0d3;}
+  #tab-patch .chip.spl{color:#b98bff;border-color:rgba(185,139,255,0.35);}
+  #tab-patch .chip.cust{color:#c4d0d3;border-color:rgba(174,190,194,0.35);}
+  #tab-patch .hop .subfields{display:flex;gap:8px;}
+  #tab-patch .hop .fw{width:110px;}
+  #tab-patch .hop .fw.narrow{width:92px;}
+  #tab-patch .hop .fw label{font-size:10.5px;color:var(--text-dim);margin-bottom:4px;display:block;}
+  #tab-patch .hop input{padding:8px 10px;font-size:13px;}
+  #tab-patch .hop-arrow{align-self:center;color:var(--text-dim);font-size:18px;padding-bottom:14px;}
+
+  #tab-patch .patch-footer{display:flex;gap:12px;flex-wrap:wrap;margin-top:18px;padding-top:16px;
+    border-top:1px solid rgba(255,255,255,0.08);}
+  #tab-patch .placeholder-nvt{border:1.5px dashed rgba(255,210,74,0.35);border-radius:14px;padding:22px;
+    background:rgba(255,210,74,0.05);color:var(--text-dim);font-size:13.5px;line-height:1.6;}
+  #tab-patch .placeholder-nvt b{color:var(--yellow);}
+
+  /* Druck-/PDF-Ausgabe der Patchungs-Doku (nur bei aktivem Export) */
+  #p_printArea{display:none;}
+  @media print{
+    body.pd-printing .wrap{display:none !important;}
+    body.pd-printing #p_printArea{display:block !important;color:#0b2b28;font-family:'Inter',sans-serif;}
+    body.pd-printing #p_printArea .pr-head{display:flex;align-items:center;gap:12px;border-bottom:2px solid #00cfb4;padding-bottom:12px;margin-bottom:16px;}
+    body.pd-printing #p_printArea .pr-logo{width:42px;height:42px;color:#00a892;flex:0 0 auto;}
+    body.pd-printing #p_printArea .pr-title{font-size:19px;font-weight:700;color:#062a26;}
+    body.pd-printing #p_printArea .pr-sub{font-size:11.5px;color:#5a6b68;margin-top:2px;}
+    body.pd-printing #p_printArea .pr-meta{display:grid;grid-template-columns:repeat(3,1fr);gap:10px 22px;margin-bottom:18px;}
+    body.pd-printing #p_printArea .pr-meta .k{color:#7a8a87;text-transform:uppercase;font-size:9.5px;letter-spacing:.06em;}
+    body.pd-printing #p_printArea .pr-meta .v{font-weight:600;color:#062a26;font-size:13px;margin-top:1px;}
+    body.pd-printing #p_printArea table.pr{width:100%;border-collapse:collapse;font-size:12px;}
+    body.pd-printing #p_printArea table.pr th{background:#e6faf6;color:#064e45;text-align:left;padding:8px 10px;border:1px solid #bfe9e1;font-weight:600;
+      -webkit-print-color-adjust:exact;print-color-adjust:exact;}
+    body.pd-printing #p_printArea table.pr td{padding:7px 10px;border:1px solid #d8e6e3;color:#12312d;}
+    body.pd-printing #p_printArea table.pr tr:nth-child(even) td{background:#f5fbfa;-webkit-print-color-adjust:exact;print-color-adjust:exact;}
+    body.pd-printing #p_printArea table.pr td.num{color:#00897a;font-weight:600;width:38px;}
+    body.pd-printing #p_printArea .pr-foot{margin-top:16px;font-size:10px;color:#9aa8a5;border-top:1px solid #e2ecea;padding-top:8px;}
+  }
+</style>
 </head>
 <body>
 <div class="bg"></div>
@@ -800,6 +904,10 @@
     <button class="tab-btn" data-tab="mikro">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="3.5"/><circle cx="12" cy="6" r="1.4"/><circle cx="12" cy="18" r="1.4"/><circle cx="6" cy="12" r="1.4"/><circle cx="18" cy="12" r="1.4"/></svg>
       Mikrorohr & Leerrohr-Kalkulator
+    </button>
+    <button class="tab-btn" data-tab="patch">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 8a3 3 0 0 1 3-3h1a3 3 0 0 1 0 6h-2a3 3 0 0 0 0 6h1a3 3 0 0 0 3-3"/><circle cx="7" cy="8" r="1.6"/><circle cx="17" cy="16" r="1.6"/></svg>
+      Patchungs-Doku
     </button>
   </nav>
 
@@ -1996,6 +2104,64 @@ renderAll();
 
   </div><!-- /tab-mikro -->
 
+  <div id="tab-patch" class="tab-panel" hidden>
+    <!-- STEP 1: Verteilpunkt -->
+    <section class="glass card">
+      <h2><span class="step">1</span> Verteilpunkt</h2>
+      <div class="choice-row">
+        <button class="choice" id="p_chMfg" onclick="pd_selectVP('mfg')">
+          <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18M8 4v5M8 14h8"/></svg></span>
+          <span><span class="t">MFG</span><span class="s">Multifunktionsgehäuse</span></span>
+        </button>
+        <button class="choice" id="p_chNvt" onclick="pd_selectVP('nvt')">
+          <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20V10l8-6 8 6v10"/><path d="M9 20v-6h6v6"/></svg></span>
+          <span><span class="t">NVT</span><span class="s">Netzverteiler</span></span>
+        </button>
+      </div>
+    </section>
+
+    <!-- STEP 2: Standortdaten (MFG oder NVT — Naming dynamisch) -->
+    <section class="glass card" id="p_locPanel" hidden>
+      <h2><span class="step">2</span> <span id="p_locTitle">Standortdaten</span></h2>
+      <div class="grid">
+        <div class="field"><label>Projekt <span class="req">*</span></label><input id="p_projekt" placeholder="z.B. AGF-2026-Nord"></div>
+        <div class="field"><label>Cluster <span class="req">*</span></label><input id="p_cluster" placeholder="z.B. Cluster 4"></div>
+        <div class="field"><label id="p_bezLabel">Bezeichnung <span class="req">*</span></label><input id="p_bez" placeholder="z.B. MFG001"></div>
+        <div class="field"><label id="p_typLabel">Typ <span class="req">*</span></label>
+          <select id="p_typ"><option value="">— wählen —</option></select>
+        </div>
+      </div>
+    </section>
+
+    <!-- STEP 3: Architektur / Topologie (Karten je Verteilpunkt dynamisch) -->
+    <section class="glass card" id="p_topoPanel" hidden>
+      <h2><span class="step">3</span> Architektur / Topologie</h2>
+      <div class="topo-row" id="p_topoRow"></div>
+      <div id="p_topoAdd" hidden style="margin-top:18px;">
+        <button class="btn primary" onclick="pd_addPatch()">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14"/></svg>
+          Neue Patchung hinzufügen
+        </button>
+      </div>
+    </section>
+
+    <!-- STEP 4: Dokumentierte Patchungen -->
+    <section class="glass card" id="p_patchPanel" hidden>
+      <h2><span class="step">4</span> Dokumentierte Patchungen</h2>
+      <div class="patch-list" id="p_patchList"></div>
+      <div class="patch-footer" id="p_patchFooter" hidden>
+        <button class="btn" onclick="pd_addPatch()">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14"/></svg>
+          Weitere Patchung hinzufügen
+        </button>
+        <button class="btn primary" onclick="pd_exportPDF()">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9V2h12v7"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
+          Als PDF exportieren
+        </button>
+      </div>
+    </section>
+  </div><!-- /tab-patch -->
+
   <div class="actions">
     <button class="btn primary" onclick="window.print()">
       <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9V2h12v7"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
@@ -2005,6 +2171,9 @@ renderAll();
 
   <footer>Berechnungen nach ITU-T Linkbudget-Methodik · Werte auf 2 Dezimalstellen gerundet · 2026</footer>
 </div>
+
+<!-- Druck-/PDF-Ansicht Patchungs-Doku (nur beim Export sichtbar) -->
+<div id="p_printArea"></div>
 
 <!-- fflate 0.8.2 (MIT) — inline gebündelt für Offline-XLSX-Entpacken -->
 <script>
@@ -2912,7 +3081,7 @@ svg.leaflet-image-layer.leaflet-interactive path {
   const NS = 'http://www.w3.org/2000/svg';
 
   /* ---------- Tab-Umschaltung ---------- */
-  const panels = {calc: $('tab-calc'), rfms: $('tab-rfms'), kalib: $('tab-kalib'), mikro: $('tab-mikro')};
+  const panels = {calc: $('tab-calc'), rfms: $('tab-rfms'), kalib: $('tab-kalib'), mikro: $('tab-mikro'), patch: $('tab-patch')};
   document.querySelectorAll('.tab-btn').forEach(btn=>{
     btn.addEventListener('click', ()=>{
       document.querySelectorAll('.tab-btn').forEach(b=>b.classList.toggle('active', b===btn));
@@ -4591,6 +4760,188 @@ buildCombo();
 renderAll();
 
 try{window.comboReset=comboReset;}catch(e){}try{window.resetAll=resetAll;}catch(e){}
+})();
+</script>
+
+<!-- ===== Patchungs-Doku (Tab): Logik ===== -->
+<script>
+(function(){
+  const $=id=>document.getElementById(id);
+  let vp=null, topo=null, patches=[], seq=0;
+
+  function esc(s){return String(s==null?'':s).replace(/"/g,'&quot;');}
+  function esc2(s){return String(s==null?'':s).replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]));}
+
+  // ---- Verteilpunkt-Konfiguration ----
+  const VP={
+    mfg:{
+      name:'MFG', long:'Multifunktionsgehäuse',
+      bezLabel:'MFG-Bezeichnung', bezPh:'z.B. MFG001',
+      typLabel:'MFG-Typ', typOptions:['TM1','TS1','PA1'],
+      topos:{
+        '1':{name:'Variante 1', sub:'mit Monitoring', chain:[['OLT','olt'],['FRMS','frms'],['ODF (Feederpatchpanel)','odf']]},
+        '2':{name:'Variante 2', sub:'direkt', chain:[['OLT','olt'],['ODF (Feederpatchpanel)','odf']]}
+      }
+    },
+    nvt:{
+      name:'NVT', long:'Netzverteiler',
+      bezLabel:'NVT-Bezeichnung', bezPh:'z.B. NVT001',
+      typLabel:'NVT-Typ', typOptions:['NVT-Medium','NVT-Small','NVT-XS'],
+      topos:{
+        'p2mp':{name:'P2MP', sub:'mit Splitter', chain:[['Splitter','spl'],['Kundenport (grau)','cust']]},
+        'p2p':{name:'P2P', sub:'direkt', chain:[['P2P-Port','odf'],['Kundenport (grau)','cust']]}
+      }
+    }
+  };
+
+  // ---- Hop-Definitionen je Verteilpunkt + Topologie ----
+  function hopDefs(){
+    if(vp==='mfg'){
+      const a=[{cls:'olt',title:'● OLT-Port',fields:[{l:'Portnr.',k:'olt',ph:'z.B. 12',n:true}]}];
+      if(topo==='1') a.push({cls:'frms',title:'◆ FRMS Port',fields:[{l:'Portnr.',k:'frms',ph:'z.B. 3',n:true}]});
+      a.push({cls:'odf',title:'▲ ODF (Feederpatchpanel)',fields:[{l:'BGT',k:'bgt',ph:'z.B. C-1'},{l:'Patchport',k:'patch',ph:'z.B. 5',n:true}]});
+      a.push({cls:'target',title:'◉ Versorgung (Ziel)',fields:[{l:'NVT',k:'nvt',ph:'z.B. 12',im:'numeric'},{l:'Splitter',k:'splitter',ph:'z.B. Splitter 1',n:true}]});
+      return a;
+    }
+    // NVT
+    if(topo==='p2mp'){
+      return [
+        {cls:'spl',title:'◆ Splitter',fields:[{l:'Name',k:'splName',ph:'z.B. SPL-3'},{l:'Port',k:'splPort',ph:'z.B. 4',n:true}]},
+        {cls:'cust',title:'◈ Kundenport (grau)',fields:[{l:'Patchpanel-Port',k:'custPort',ph:'z.B. 7',n:true}]}
+      ];
+    }
+    return [
+      {cls:'odf',title:'▲ P2P-Port',fields:[{l:'Patchpanel-Port',k:'p2pPort',ph:'z.B. 5'}]},
+      {cls:'cust',title:'◈ Kundenport (grau)',fields:[{l:'Patchpanel-Port',k:'custPort',ph:'z.B. 7',n:true}]}
+    ];
+  }
+
+  // ---- Step 1: Verteilpunkt ----
+  window.pd_selectVP=function(type){
+    if(vp!==type){ topo=null; patches=[]; seq=0; }
+    vp=type;
+    $('p_chMfg').classList.toggle('active',type==='mfg');
+    $('p_chNvt').classList.toggle('active',type==='nvt');
+    const cfg=VP[type];
+    $('p_locTitle').textContent='Standortdaten · '+cfg.name;
+    $('p_bezLabel').innerHTML=cfg.bezLabel+' <span class="req">*</span>';
+    $('p_bez').placeholder=cfg.bezPh;
+    $('p_typLabel').innerHTML=cfg.typLabel+' <span class="req">*</span>';
+    $('p_typ').innerHTML='<option value="">— wählen —</option>'+cfg.typOptions.map(o=>`<option value="${o}">${o}</option>`).join('');
+    $('p_locPanel').hidden=false;
+    renderTopoOptions();
+    $('p_topoPanel').hidden=false;
+    $('p_topoAdd').hidden=true;
+    render();
+  };
+
+  function renderTopoOptions(){
+    const cfg=VP[vp];
+    $('p_topoRow').innerHTML=Object.keys(cfg.topos).map(k=>{
+      const t=cfg.topos[k];
+      const chips=t.chain.map(c=>`<span class="chip ${c[1]}">${c[0]}</span>`).join('<span class="arrow">→</span>');
+      return `<div class="topo" id="p_topo_${k}" onclick="pd_selectTopo('${k}')">
+        <div class="topo-name"><span class="v">${t.name}</span> ${t.sub}</div>
+        <div class="chain">${chips}</div>
+      </div>`;
+    }).join('');
+  }
+
+  window.pd_selectTopo=function(v){
+    topo=v;
+    document.querySelectorAll('#p_topoRow .topo').forEach(el=>el.classList.toggle('active', el.id==='p_topo_'+v));
+    $('p_topoAdd').hidden=false;
+    render();
+  };
+
+  window.pd_addPatch=function(){
+    if(!topo) return;
+    patches.push({id:++seq});
+    render();
+    const last=document.querySelector('#p_patchList .patch-card:last-child input');
+    if(last) last.focus();
+  };
+  window.pd_removePatch=function(id){ patches=patches.filter(p=>p.id!==id); render(); };
+  window.pd_updatePatch=function(id,field,val){ const p=patches.find(p=>p.id===id); if(p) p[field]=val; };
+
+  function render(){
+    const has=patches.length>0;
+    $('p_patchPanel').hidden=!has;
+    $('p_patchFooter').hidden=!has;
+    const defs=hopDefs();
+    $('p_patchList').innerHTML=patches.map((p,i)=>{
+      const hops=defs.map(h=>`
+        <div class="hop ${h.cls}">
+          <div class="hop-title">${h.title}</div>
+          <div class="subfields">${h.fields.map(f=>`<div class="fw${f.n?' narrow':''}"><label>${f.l}</label><input value="${esc(p[f.k])}" placeholder="${f.ph}"${f.im?` inputmode="${f.im}"`:''} oninput="pd_updatePatch(${p.id},'${f.k}',this.value)"></div>`).join('')}</div>
+        </div>`).join('<div class="hop-arrow">→</div>');
+      return `
+      <div class="patch-card">
+        <div class="patch-head">
+          <div class="pnum"><span class="badge">Patchung #${i+1}</span></div>
+          <button class="btn ghost-danger" onclick="pd_removePatch(${p.id})" title="Patchung entfernen" style="border-color:rgba(255,92,108,0.4);color:var(--red);background:rgba(255,92,108,0.08);padding:8px;">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h18M8 6V4h8v2M6 6l1 14h10l1-14"/></svg>
+          </button>
+        </div>
+        <div class="hops">${hops}</div>
+      </div>`;
+    }).join('');
+  }
+
+  /* ===== PDF-Export ===== */
+  const LOGO='<svg class="pr-logo" viewBox="0 0 48 48" fill="currentColor"><path d="M24 1C22.835 1 21.795 1.734 21.148 3.013L1.594 41.656C0.975 42.88 0.974 44.157 1.591 45.161C2.202 46.154 3.324 46.728 4.676 46.741L43.324 46.741C44.676 46.728 45.798 46.154 46.408 45.162C47.025 44.158 47.024 42.88 46.405 41.656L40.114 29.224C39.108 27.235 36.668 25.735 34.437 25.735L34.436 25.735L23.989 25.738C23.014 25.738 22.223 26.53 22.223 27.505C22.224 28.48 23.014 29.271 23.99 29.271L23.99 29.271L34.437 29.267L34.438 29.267C35.332 29.267 36.559 30.021 36.963 30.819L43.232 43.209L4.768 43.209L24 5.201L30.894 18.826C31.205 19.441 31.827 19.795 32.472 19.795C32.74 19.795 33.012 19.734 33.267 19.605C34.138 19.164 34.486 18.102 34.046 17.231L26.852 3.013C26.204 1.734 25.165 1 24 1Z"/></svg>';
+  function val(id){ const el=$(id); return el? String(el.value||'').trim() : ''; }
+  function fmtBGT(v){ v=String(v==null?'':v).trim(); return v ? 'BGT '+v : ''; }
+  function fmtNVT(v){ v=String(v==null?'':v).trim(); if(!v) return ''; const d=v.replace(/\D/g,''); return 'NVT'+(d ? d.padStart(3,'0') : v); }
+
+  function printCols(){
+    if(vp==='mfg'){
+      const wf=topo==='1';
+      return {
+        heads: wf?['#','OLT-Port','FRMS Port','ODF · BGT','ODF · Patchport','NVT','Splitter']
+                 :['#','OLT-Port','ODF · BGT','ODF · Patchport','NVT','Splitter'],
+        row:(p,i)=> wf?[i+1,p.olt,p.frms,fmtBGT(p.bgt),p.patch,fmtNVT(p.nvt),p.splitter]
+                     :[i+1,p.olt,fmtBGT(p.bgt),p.patch,fmtNVT(p.nvt),p.splitter]
+      };
+    }
+    if(topo==='p2mp') return {heads:['#','Splitter-Name','Splitter-Port','Kundenport'], row:(p,i)=>[i+1,p.splName,p.splPort,p.custPort]};
+    return {heads:['#','P2P-Port','Kundenport'], row:(p,i)=>[i+1,p.p2pPort,p.custPort]};
+  }
+
+  window.pd_exportPDF=function(){
+    if(!patches.length) return;
+    buildPrint();
+    document.body.classList.add('pd-printing');
+    const done=()=>{ document.body.classList.remove('pd-printing'); window.removeEventListener('afterprint',done); };
+    window.addEventListener('afterprint',done);
+    window.print();
+    setTimeout(done,1500);
+  };
+
+  function buildPrint(){
+    const cfg=VP[vp], t=cfg.topos[topo];
+    const topoLabel = t.name+' · '+t.chain.map(c=>c[0]).join(' → ');
+    const meta=[
+      ['Verteilpunkt', cfg.name+' · '+cfg.long],
+      ['Projekt', val('p_projekt')||'—'],
+      ['Cluster', val('p_cluster')||'—'],
+      [cfg.bezLabel, val('p_bez')||'—'],
+      [cfg.typLabel, val('p_typ')||'—'],
+      ['Topologie', topoLabel]
+    ];
+    const cols=printCols();
+    const rows=patches.map((p,i)=>'<tr>'+cols.row(p,i).map((c,ci)=>`<td${ci===0?' class="num"':''}>${esc2(c!==''&&c!=null?c:'—')}</td>`).join('')+'</tr>').join('');
+    const now=new Date();
+    const stamp=now.toLocaleDateString('de-DE')+' '+now.toLocaleTimeString('de-DE',{hour:'2-digit',minute:'2-digit'});
+    $('p_printArea').innerHTML=`
+      <div class="pr-head">${LOGO}
+        <div><div class="pr-title">Patchungs-Dokumentation</div>
+        <div class="pr-sub">Alpen Glasfaser GmbH · erstellt ${stamp}</div></div>
+      </div>
+      <div class="pr-meta">${meta.map(m=>`<div><div class="k">${esc2(m[0])}</div><div class="v">${esc2(m[1])}</div></div>`).join('')}</div>
+      <table class="pr"><thead><tr>${cols.heads.map(h=>`<th>${esc2(h)}</th>`).join('')}</tr></thead><tbody>${rows}</tbody></table>
+      <div class="pr-foot">${patches.length} Patchung(en) dokumentiert · Fiber Optics Suite</div>`;
+  }
 })();
 </script>
 </body>
