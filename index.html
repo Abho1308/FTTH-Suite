@@ -4835,7 +4835,7 @@ try{window.comboReset=comboReset;}catch(e){}try{window.resetAll=resetAll;}catch(
     if(vp==='mfg'){
       const a=[{cls:'olt',title:'● OLT-Port',fields:[{l:'Portnr.',k:'olt',ph:'z.B. 12',n:true}]}];
       if(topo==='1') a.push({cls:'frms',title:'◆ FRMS Port',fields:[{l:'Portnr.',k:'frms',ph:'z.B. 3',n:true}]});
-      a.push({cls:'odf',title:'▲ ODF (Feederpatchpanel)',fields:[{l:'BGT',k:'bgt',ph:'z.B. C-1'},{l:'Patchport',k:'patch',ph:'z.B. 5',n:true}]});
+      a.push({cls:'odf',title:'▲ ODF (Feederpatchpanel)',fields:[{l:'BGT',k:'bgt',ph:'z.B. C-1'},{l:'Feederkabel',k:'feeder',ph:'z.B. K001'},{l:'Patchport',k:'patch',ph:'z.B. 5',n:true}]});
       a.push({cls:'target',title:'◉ Versorgung (Ziel)',fields:[{l:'NVT',k:'nvt',ph:'z.B. 12',im:'numeric'},{l:'Splitter',k:'splitter',ph:'z.B. Splitter 1',n:true}]});
       return a;
     }
@@ -4934,10 +4934,10 @@ try{window.comboReset=comboReset;}catch(e){}try{window.resetAll=resetAll;}catch(
     if(vp==='mfg'){
       const wf=topo==='1';
       return {
-        heads: wf?['#','OLT-Port','FRMS Port','ODF · BGT','ODF · Patchport','NVT','Splitter']
-                 :['#','OLT-Port','ODF · BGT','ODF · Patchport','NVT','Splitter'],
-        row:(p,i)=> wf?[i+1,p.olt,p.frms,fmtBGT(p.bgt),p.patch,fmtNVT(p.nvt),p.splitter]
-                     :[i+1,p.olt,fmtBGT(p.bgt),p.patch,fmtNVT(p.nvt),p.splitter]
+        heads: wf?['#','OLT-Port','FRMS Port','ODF · BGT','ODF · Feederkabel','ODF · Patchport','NVT','Splitter']
+                 :['#','OLT-Port','ODF · BGT','ODF · Feederkabel','ODF · Patchport','NVT','Splitter'],
+        row:(p,i)=> wf?[i+1,p.olt,p.frms,fmtBGT(p.bgt),p.feeder,p.patch,fmtNVT(p.nvt),p.splitter]
+                     :[i+1,p.olt,fmtBGT(p.bgt),p.feeder,p.patch,fmtNVT(p.nvt),p.splitter]
       };
     }
     if(topo==='p2mp') return {heads:['#','Splitter-Name','Splitter-Port','Kundenport'], row:(p,i)=>[i+1,p.splName,p.splPort,p.custPort]};
