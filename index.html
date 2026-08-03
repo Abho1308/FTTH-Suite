@@ -4817,7 +4817,7 @@ try{window.comboReset=comboReset;}catch(e){}try{window.resetAll=resetAll;}catch(
       topos:{
         '1':{name:'Variante 1', sub:'mit Monitoring', chain:[['OLT','olt'],['FRMS','frms'],['ODF (Feederpatchpanel)','odf']]},
         '2':{name:'Variante 2', sub:'direkt', chain:[['OLT','olt'],['ODF (Feederpatchpanel)','odf']]},
-        '3':{name:'Variante 3', sub:'P2P Patchung', chain:[['Nokia ANE Port','olt'],['ODF (Feederpatchpanel)','odf']]}
+        '3':{name:'Variante 3', sub:'P2P Patchung', chain:[['Nokia ANE Port','olt'],['ODF (Feederpatchpanel)','odf'],['NVT','target']]}
       }
     },
     nvt:{
@@ -4837,7 +4837,8 @@ try{window.comboReset=comboReset;}catch(e){}try{window.resetAll=resetAll;}catch(
       if(topo==='3'){
         return [
           {cls:'olt',title:'▣ Nokia ANE Port',fields:[{l:'Portnr.',k:'anePort',ph:'z.B. 12',n:true}]},
-          {cls:'odf',title:'▲ ODF (Feederpatchpanel)',fields:[{l:'BGT',k:'bgt',ph:'z.B. C-1'},{l:'Feederkabel',k:'feeder',ph:'z.B. K001'},{l:'Patchport',k:'patch',ph:'z.B. 5',n:true}]}
+          {cls:'odf',title:'▲ ODF (Feederpatchpanel)',fields:[{l:'BGT',k:'bgt',ph:'z.B. C-1'},{l:'Feederkabel',k:'feeder',ph:'z.B. K001'},{l:'Patchport',k:'patch',ph:'z.B. 5',n:true}]},
+          {cls:'target',title:'◉ NVT',fields:[{l:'NVT',k:'nvt',ph:'z.B. 12',im:'numeric'}]}
         ];
       }
       const a=[{cls:'olt',title:'● OLT-Port',fields:[{l:'Linecard',k:'linecard',ph:'z.B. 1',n:true},{l:'Portnr.',k:'olt',ph:'z.B. 12',n:true}]}];
@@ -4940,8 +4941,8 @@ try{window.comboReset=comboReset;}catch(e){}try{window.resetAll=resetAll;}catch(
   function printCols(){
     if(vp==='mfg'){
       if(topo==='3'){
-        return {heads:['#','Nokia ANE Port','ODF · BGT','ODF · Feederkabel','ODF · Patchport'],
-                row:(p,i)=>[i+1,p.anePort,fmtBGT(p.bgt),p.feeder,p.patch]};
+        return {heads:['#','Nokia ANE Port','ODF · BGT','ODF · Feederkabel','ODF · Patchport','NVT'],
+                row:(p,i)=>[i+1,p.anePort,fmtBGT(p.bgt),p.feeder,p.patch,fmtNVT(p.nvt)]};
       }
       const wf=topo==='1';
       return {
