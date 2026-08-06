@@ -3669,7 +3669,7 @@ function addRow(){
       <div class="field f-span2"><label>Länge der Trasse (m)</label><input type="number" step="any" min="0" data-f="len" placeholder="z.B. 540" oninput="updateViz(${id})"></div>
 
       <div class="field f-span2"><label>Prüfdruck (bar)</label>
-        <input type="number" step="any" min="0" data-f="pruefdruck" placeholder="3–5 bar" oninput="checkPruefdruck(this)">
+        <input type="number" step="any" min="0" data-f="pruefdruck" placeholder="5 bar" oninput="checkPruefdruck(this)">
         <div class="hint" data-h="pruefdruck"></div></div>
 
       <div class="field f-span2"><label>Röhrchenreinigung / -schmierung</label>
@@ -3727,9 +3727,8 @@ function checkCaliber(el){
 /* ===== Prüfdruck (Druckprüfung der Trasse): 3–5 bar · genau 5 = Warnung · sonst kritisch ===== */
 function pruefdruckZone(v){
   if(isNaN(v)) return {cls:null,label:''};
-  if(v < 3 || v > 5) return {cls:'nok', label:'Außerhalb 3–5 bar — Druckprüfung nicht bestanden'};
-  if(v === 5)        return {cls:'warn',label:'Oberes Limit (5 bar) — Warnstufe'};
-  return {cls:'ok', label:'Im Sollbereich 3–5 bar'};
+  if(Math.abs(v-5) < 1e-9) return {cls:'ok', label:'Richtwert erreicht (5 bar)'};
+  return {cls:'nok', label:'Richtwert 5 bar nicht erreicht — Druckprüfung nicht bestanden'};
 }
 function checkPruefdruck(el){
   if(!el) return;
@@ -3828,11 +3827,10 @@ function runCheck(){
       else if(Math.abs(cv-soll)>PARAMS.caliberTol) flag('nok','Falsches Kaliber verwendet','Istwert <b>⌀ '+fmt(cv)+' mm</b> statt gefordert ⌀ '+sollStr+' mm.');
     }
 
-    // 3a. Prüfdruck (Druckprüfung der Trasse): 3–5 bar · =5 Warnung · sonst kritisch
+    // 3a. Prüfdruck (Druckprüfung der Trasse): Richtwert exakt 5 bar · sonst kritisch
     if(!isNaN(pruef)){
       const pp=pruefdruckZone(pruef);
-      if(pp.cls==='nok') flag('nok','Prüfdruck außerhalb des Bereichs','Istwert <b>'+fmt(pruef)+' bar</b> — '+pp.label+'.');
-      else if(pp.cls==='warn') flag('warn','Prüfdruck am oberen Limit','Istwert <b>'+fmt(pruef)+' bar</b> — '+pp.label+'.');
+      if(pp.cls==='nok') flag('nok','Prüfdruck nicht 5 bar','Istwert <b>'+fmt(pruef)+' bar</b> — Richtwert 5 bar nicht erreicht.');
     }
 
     // 3b. Kalibrierdruck (5-zone)
